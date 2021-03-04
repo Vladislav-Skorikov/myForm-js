@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>задание 1</title>
+    <meta charset="utf-8" />
+    <script>
+        window.onload = function () {
+            var form = document.getElementsByTagName("form")[0],
+                inputs = document.getElementsByTagName("input"),
+                errorAll = document.getElementById("errorAll");
+            form.addEventListener("submit", function (e) {
+                var flag = true;
+                for (var i = 0; i < inputs.length; i++) {
+                    if (inputs[i].value.length == 0)
+                        flag = !flag;
+                }
+                if (flag) {
+                    e.preventDefault();
+                    errorall.style.display = "block";
+                }
+                else {
+                    errorall.style.display = "none";
+                }
+            })
+            var password = document.getElementById("password"),
+                password1 = document.getElementById("password1"),
+                error = document.getElementById("error");
+            password1.onblur = function () {
+                if (password.value === password1.value) {
+                    error.style.display = "none";
+                }
+                else {
+                    error.style.display = "block";
+                }
+            }
+            var email = document.getElementById("email"),
+                errormail = document.getElementById("errormail");
+            pattern = /\b[a-z0-9._]+@[a-z0-9.-]+\.[a-z]{2,4}\b/i;
+            email.onblur = function () {
+                if (pattern.test(email.value)) {
+                    errormail.style.display = "none";
+                }
+                else {
+                    errormail.style.display = "block";
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            height: 100%;
+            width: 100%;
+        }
+
+        form {
+            display: table-caption;
+            box-shadow: inset 0 1px 4px #7c748f, inset 0 -4px 20px #332f3b, 0 3px 1px 0 #332f3b;
+            background-image: -webkit-linear-gradient( top, #CC4E5F, #b33445);
+        }
+
+        div {
+            margin: 15px;
+        }
+
+        #submit {
+            clear: both;
+            margin: 15px;
+        }
+
+        span {
+            display: none;
+            color: #100a1c;
+            font-family: Arial;
+            font-style: italic;
+            position: absolute;
+        }
+
+        input[type="text"] {
+            background-color: #C7C7B0;
+        }
+
+            input[type="text"]:hover {
+                background-color: #9B8F89;
+            }
+
+            input[type='text']:focus {
+                outline: none;
+            }
+
+        input[type='password'] {
+            background-color: #4B4657;
+        }
+
+            input[type='password']:hover {
+                background-color: #332f3b;
+            }
+
+            input[type='password']:focus {
+                outline: groove;
+            }
+
+        input[type='email'] {
+            background-color: #9dd2ea;
+        }
+
+            input[type='email']:hover {
+                background-color: #ff9fa8;
+            }
+
+            input[type='email']:focus {
+                outline: groove;
+            }
+    </style>
+</head>
+<body>
+
+    <form>
+        <div>
+            <label for="firstName">Name</label>
+            <input id="firstName" type="text" />
+        </div>
+        <div>
+            <label for="lastName">Last name</label>
+            <input id="lastName" type="text" />
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input id="password" type="password" />
+
+        </div>
+        <div>
+            <label for="password1">Confirm password</label>
+            <input id="password1" type="password" />
+            <span id="error">Password mismatch!</span>
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input id="email" type="email" />
+            <span id="errormail">Unknown format!</span>
+        </div>
+        <div>
+            Male<input type="radio" name="group1" value="on" />
+            Female<input type="radio" name="group1" value="off" />
+        </div>
+        <div>
+            <input id="submit" type="submit" />
+            <span id="errorall">All fields must be filled!</span>
+        </div>
+    </form>
+
+</body>
+</html>
